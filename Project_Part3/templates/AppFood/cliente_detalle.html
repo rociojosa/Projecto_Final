@@ -1,0 +1,14 @@
+{% extends "AppFood/inicio.html" %}
+
+
+{% block content %}
+
+<title>Cliente Detalle</title>
+
+<p>Nombre del cliente: <i>{{cliente.nombre}}</i></p>
+<p>Reserva: <i>{{ cliente.reserva }}</i></p>
+<p>
+    <a href="{% url 'List' %}">Regresar</a>
+</p>
+
+{% endblock %}

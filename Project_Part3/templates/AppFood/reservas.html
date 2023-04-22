@@ -1,0 +1,17 @@
+{% extends "AppFood/inicio.html" %}
+
+{% block titulo %} Formulario de Reservas {%endblock%}
+
+{% block content %}
+
+<h1>Formulario para registro de tu reserva</h1>
+</form>
+    <form action="{% url 'Reservas' %}" method="post">
+    {% csrf_token %}
+    
+    {{ form_reserva.as_p }}
+
+    <input type="submit" value="Enviar">
+    </form>
+<br><hr>
+{% endblock %}

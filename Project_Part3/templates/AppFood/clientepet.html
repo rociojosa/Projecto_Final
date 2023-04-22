@@ -1,0 +1,17 @@
+{% extends "AppFood/inicio.html" %}
+
+{% block titulo %} Formulario de Clientes Pet {%endblock%}
+
+{% block content %}
+
+<h1>Formulario para registro de clientes Pet </h1>
+
+    <form action="{% url 'ClientePet' %}" method="post">
+    {% csrf_token %}
+    {{ mi_formulario.as_p }}
+    <input type="submit" value="Enviar">
+
+    </form>
+    <br><hr>
+
+{%endblock%}

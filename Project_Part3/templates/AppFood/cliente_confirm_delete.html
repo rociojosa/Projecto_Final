@@ -1,0 +1,15 @@
+{% extends "AppFood/inicio.html" %}
+
+
+{% block content %}
+
+<title>Cliente Borrar</title>
+
+<form method="post">{% csrf_token %}
+
+    Está seguro de que quiere eliminar el cliente "{{ object }}"?
+    <input type="submit" value="Submit" />
+
+</form> 
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "AppFood/inicio.html" %}
+
+
+{% block content %}
+
+<title>Cliente Formulario</title>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Enviar" />
+
+</form> 
+
+{% endblock %}

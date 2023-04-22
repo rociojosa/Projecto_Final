@@ -1,0 +1,28 @@
+{% extends "AppFood/inicio.html" %}
+
+{% block titulo %} Buscar un Cliente {%endblock%}
+
+{% block content %}
+
+<h1>Ingrese los datos para buscar un cliente registrado</h1>
+
+<form action="{%  url 'Busqueda_cliente' %}" method="GET">
+        {{ mi_formulario.as_p }}
+        <input type="submit" value="Buscar">
+</form>
+
+<hr><br>
+    {% if clientes %}
+
+        {% for cliente in clientes %}
+
+            <p> Cliente entontrado: {{ cliente.nombre }} </p>
+            <p> Numero de reserva: {{ cliente.reserva }} </p>
+
+        {% endfor %}
+        
+    {% else %}
+        <h3>No hay clientes filtrados</h3>
+    {% endif %}
+
+{% endblock %}

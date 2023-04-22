@@ -1,0 +1,24 @@
+{% extends "AppFood/inicio.html" %}
+
+
+{% block content %}
+
+<title>Clientes de AppFood</title>
+
+<ul>
+    {% for cliente in object_list %}
+
+     <li>
+        <p>NOMBRE: {{ cliente.nombre }}</p>
+        <p> RESERVA: {{cliente.reserva }}</p>
+        
+            <a href="{% url 'Detail' cliente.id %}">Ver</a>
+            <a href="{% url 'Edit' cliente.id %}">Editar</a>
+            <a href="{% url 'Delete' cliente.id %}">Borrar</a>
+        </p>
+     </li>
+
+     {% endfor %}
+</ul>
+
+{% endblock %}
