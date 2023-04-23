@@ -8,3 +8,6 @@ class NewPost(models.Model):
     def __str__(self):
         return self.titulo
 
+class Comment(models.Model):
+    titulo = models.CharField(max_length=100)
+    body = models.TextField()

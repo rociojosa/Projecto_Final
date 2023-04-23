@@ -1,15 +1,15 @@
-{% extends "Blog/inicio.html" %}
+{% extends "AppFood/inicio.html" %}
 
 {% block content %}
 
 <h1> New Post </h1>
 
-    <form class="post-form" method="POST" enctype="multipart/form-data"> 
+    <form action="" method="POST" enctype="multipart/form-data"> 
         {% csrf_token %}
         {{ form.media }}
         {{ form.as_p }}
 
-        <input type="submit" value ="{{Save}}">
+        <input type="submit" value="Enviar">
     </form> 
 
 {%endblock%}
