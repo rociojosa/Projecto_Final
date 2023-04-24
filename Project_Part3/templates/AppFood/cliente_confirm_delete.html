@@ -7,8 +7,14 @@
 
 <form method="post">{% csrf_token %}
 
-    Está seguro de que quiere eliminar el cliente "{{ object }}"?
-    <input type="submit" value="Submit" />
+    Está seguro de que quiere eliminar el cliente "{{cliente.nombre}}"?
+
+    
+    <form method="post">{% csrf_token %}
+    <input type="submit" value="Si" />
+
+    <a href="{% url 'List' %}">Regresar</a>
+
 
 </form> 
 

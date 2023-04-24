@@ -7,11 +7,15 @@
   <ul>
     {% for post in posts %}
       <li>
+
+
         <p>{{ post.titulo }}</p>
         <p>{{ post.body }}</p>
-        <img src="{{ post.imagen.url }}" alt="Imagen">
+        <img src="{{ post.image.url }}" alt="Image">
 
-        <a href="{% url 'comment_form' %}">Ver</a>
+
+
+        <a href="{% url 'comment_form' post.id %}">Ver</a>
 
     </li>
     {% endfor %}

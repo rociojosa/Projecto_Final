@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from Blog.models import NewPost
+from Blog.models import NewPost, Comment
 from Blog.forms import PostForm, CommentForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -65,15 +65,23 @@ class PostDelete(DeleteView):
     model = NewPost
     sucess_url = "/AppFood/post/list"
 
-def comment(request):
+def comment(request, id):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_comment = form.save(commit=False)
+            new_comment.post_id=id
+            new_comment.save()
             return redirect('AppFood/comment_success.html')
-    else:
-        form = CommentForm()
-    return render(request, 'AppFood/comment_form.html', {'form': form})
+    comments = Comment.objects.filter(post_id=id)
+    post = NewPost.objects.get(id=id)
+    form = CommentForm()
+    context = {
+        'form': form,
+        'comments': comments,
+        'post': post,
+    }
+    return render(request, 'AppFood/comment_form.html', context)
 
 def comment_success(request):
     return render(request, 'AppFood/comment_success.html')

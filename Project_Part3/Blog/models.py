@@ -9,5 +9,6 @@ class NewPost(models.Model):
         return self.titulo
 
 class Comment(models.Model):
+    post = models.ForeignKey(NewPost, on_delete=models.CASCADE, related_name="comments")
     titulo = models.CharField(max_length=100)
     body = models.TextField()

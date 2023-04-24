@@ -2,34 +2,37 @@
 
 {% block content %}
 
-<img src="{{ post.imagen.url }}" alt="Imagen">
+<img src="{{ post.image.url }}" alt="Imagen">
 
-<p>Titulo: {{ post.titulo }}</p>
-<p>Body: {{ post.body }}</p>
+<h5><p>Titulo del Post: {{ post.titulo }}</p></h5>
+<h5><p>Descripcion del Post: {{ post.body }}</p></h5>
 
 <title> Nuevo Comentario </title>
   
   {% for comment in comments %}
   <div class="comment">
     <p class="info">
-      Comment {{ forloop.counter }} by {{ comment.name }}
-        {{ comment.created }}
-     </p>
-       {{ comment.body|linebreaks }}
-     </div>
+      Titulo del comentario: {{ comment.titulo }}
+      Comentario: {{ comment.body }}
+    </p>
+    </div>
        {% empty %}
+
       <p>No existen comentarios aún.</p>
     {% endfor %}
 
     {% if new_comment %}
        <h2>Su comentario ha sido agregado.</h2>
        {% else %}
+
     <h2>Agrega un nuevo comentario</h2>
     <form action="." method="post">
-        {{ Form.as_p }}
+        {{ form.as_p }}
         {% csrf_token %}
-          <input type="submit" class="btn btn-primary" value="Comentar">
+
+        <a href="{% url 'comment_success' %}">Comentar</a>
   </form>
+  
     {% endif %}
 
     <a href="{% url 'post_list' %}">Regresar</a>

@@ -6,7 +6,7 @@
 
 <h1>{{ post.titulo }}</h1>
 <p>{{ post.body }}</p>
-<img src="{{ mi_objeto.imagen.url }}" alt="Imagen">
+<img src="{{ mi_objeto.image.url }}" alt="Imagen">
 
   {% for comment in comments %}
   <div class="comment">
@@ -27,7 +27,9 @@
     <form action="." method="post">
         {{ CommentForm.as_p }}
         {% csrf_token %}
-          <input type="submit" class="btn btn-primary" value="Comentar">
+
+        <a href="{% url 'post_list' %}">Comentar</a>
+    
   </form>
     {% endif %}
 

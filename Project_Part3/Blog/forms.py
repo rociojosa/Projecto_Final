@@ -9,4 +9,4 @@ class PostForm(ModelForm):
 class CommentForm(ModelForm):
     class Meta:
         model = Comment
-        fields = '__all__'
+        fields = ('titulo', 'body')

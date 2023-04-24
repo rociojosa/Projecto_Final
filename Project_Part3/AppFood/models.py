@@ -7,7 +7,7 @@ class Cliente(models.Model):
     reserva = models.IntegerField(max_length=200)
 
     def __str__(self):
-        return f"Nombre cliente: {self.nombre}, Alergias: {self.alergias}, Reservas: {self.reservas}"
+        return f"Nombre cliente: {self.nombre}, Alergias: {self.alergias}, Reservas: {self.reserva}"
 
 
 class Reservas(models.Model):
