@@ -118,14 +118,14 @@ class ClienteDetalle(DetailView):
 
 class ClienteCreacion(CreateView):
     model = Cliente
-    sucess_url = "/AppFood/clientes/list"
+    success_url = "/AppFood/clientes/list"
     fields = ['nombre', 'reserva']
 
 class ClienteUpdate(UpdateView):
     model = Cliente
-    sucess_url = "/AppFood/clientes/list"
+    success_url = "/AppFood/clientes/list"
     fields = ['nombre', 'reserva']
 
 class ClienteDelete(DeleteView):
     model = Cliente
-    sucess_url = "/AppFood/clientes/list"
+    success_url = "/AppFood/clientes/list"
