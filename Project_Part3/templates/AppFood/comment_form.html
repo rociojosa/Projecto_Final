@@ -12,6 +12,7 @@
   {% for comment in comments %}
   <div class="comment">
     <p class="info">
+
       Titulo del comentario: {{ comment.titulo }}
       Comentario: {{ comment.body }}
     </p>
@@ -30,7 +31,8 @@
         {{ form.as_p }}
         {% csrf_token %}
 
-        <a href="{% url 'comment_success' %}">Comentar</a>
+        <input type="submit" class="btn btn-primary" value="Comentar">
+
   </form>
   
     {% endif %}

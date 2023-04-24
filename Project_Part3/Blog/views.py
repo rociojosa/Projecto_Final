@@ -72,7 +72,7 @@ def comment(request, id):
             new_comment = form.save(commit=False)
             new_comment.post_id=id
             new_comment.save()
-            return redirect('AppFood/comment_success.html')
+            return redirect('comment_success')
     comments = Comment.objects.filter(post_id=id)
     post = NewPost.objects.get(id=id)
     form = CommentForm()
@@ -82,6 +82,7 @@ def comment(request, id):
         'post': post,
     }
     return render(request, 'AppFood/comment_form.html', context)
+
 
 def comment_success(request):
     return render(request, 'AppFood/comment_success.html')
