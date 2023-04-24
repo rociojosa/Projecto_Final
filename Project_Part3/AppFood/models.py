@@ -3,16 +3,16 @@ from django.db import models
 class Cliente(models.Model):
 
     nombre = models.CharField(max_length=40)
-    alergias = models.CharField(max_length=40)
-    reserva = models.IntegerField(unique=True)
+    alergias = models.CharField(max_length=15)
+    reserva = models.IntegerField(max_length=200)
 
     def __str__(self):
-        return f"Nombre cliente: {self.nombre}, Alergias: {self.alergias}, Reserva: {self.reserva}"
+        return f"Nombre cliente: {self.nombre}, Alergias: {self.alergias}, Reservas: {self.reservas}"
 
 
 class Reservas(models.Model):
     nombre = models.CharField(max_length=30)
-    reserva = models.IntegerField(unique=True)
+    reserva = models.IntegerField(max_length=200)
     fecha = models.DateField(max_length=8)
     horario = models.TimeField()
 

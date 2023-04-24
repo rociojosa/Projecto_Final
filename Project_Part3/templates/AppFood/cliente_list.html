@@ -10,7 +10,7 @@
 
      <li>
         <p>NOMBRE: {{ cliente.nombre }}</p>
-        <p> RESERVA: {{cliente.reserva }}</p>
+        <p> NUMERO DE RESERVAS: {{cliente.reserva }}</p>
         
             <a href="{% url 'Detail' cliente.id %}">Ver</a>
             <a href="{% url 'Edit' cliente.id %}">Editar</a>

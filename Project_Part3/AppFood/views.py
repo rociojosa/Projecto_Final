@@ -25,7 +25,6 @@ def buscar_cliente(request):
         return render(request,"AppFood/busqueda_cliente.html", {"mi_formulario":mi_formulario})
 
 
-
 def inicio(request):
     return render(request, "AppFood/inicio.html")
 
@@ -120,12 +119,12 @@ class ClienteDetalle(DetailView):
 class ClienteCreacion(CreateView):
     model = Cliente
     sucess_url = "/AppFood/clientes/list"
-    fields = ['nombre', 'reserva']
+    fields = ['nombre', 'reservas']
 
 class ClienteUpdate(UpdateView):
     model = Cliente
     sucess_url = "/AppFood/clientes/list"
-    fields = ['nombre', 'reserva']
+    fields = ['nombre', 'reservas']
 
 class ClienteDelete(DeleteView):
     model = Cliente
