@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from Blog.models import NewPost, Comment
 from Blog.forms import PostForm, CommentForm
 from django.views.generic import ListView
@@ -26,16 +28,16 @@ def post(request, pk):
     context = {'post': post}
     return render(request, 'AppFood/post.html', context)
 
-def editPost (request, pk):
-    post = NewPost.objects.get(id=pk)
-    form = PostForm(isinstance= post)
-    if request.method =="POST":
-        form = PostForm(request.POST, request.FILES, isinstance= post)
-        if form.is_valid():
-            form.save()
-        return redirect('Post')
-    context = {'form': form}
-    return render(request, 'AppFood/post.html', context)
+@login_required
+def editPost(request, id):
+  post = get_object_or_404(NewPost, id=id)
+  if request.user == post.author or request.user.is_superuser:
+    # Lógica de edición de post
+    return render(request, 'AppFood/edit_post.html', {'post': post})
+  else:
+    messages.error(request, "No tienes permisos para editar este post")
+
+    return redirect('AppFood/post_detalle.html', id=id)
 
 def post_list(request):
     posts = NewPost.objects.all()
@@ -53,17 +55,17 @@ def detalle_vista(request, id):
 
 class PostCreacion(CreateView):
     model = NewPost
-    sucess_url = "/AppFood/post/list"
+    success_url = "/Blog/post-list"
     fields = ['titulo', 'body']
 
 class PostUpdate(UpdateView):
     model = NewPost
-    sucess_url = "/AppFood/post/list"
+    success_url = "/Blog/post-list"
     fields = ['titulo', 'body']
 
 class PostDelete(DeleteView):
     model = NewPost
-    sucess_url = "/AppFood/post/list"
+    success_url = "/Blog/post-list"
 
 def comment(request, id):
     if request.method == 'POST':

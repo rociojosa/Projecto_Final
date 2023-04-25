@@ -1,0 +1,17 @@
+{% extends "AppFood/inicio.html" %}
+
+
+{% block content %}
+
+<title>Cargar Avatar</title>
+
+<form method="POST" enctype="multipart/form-data">
+    
+    {% csrf_token %}
+    {{mi_formulario.as_p}}
+
+    <input type="submit" value="Actualizar">
+
+</form> 
+
+{% endblock %}

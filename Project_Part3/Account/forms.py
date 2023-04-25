@@ -1,6 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
 from django.contrib.auth.models import User
+from Account.models import Avatar
+from django.forms import ModelForm
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -23,3 +25,9 @@ class UserEditForm(UserCreationForm):
         model = User
         fields = ["username", "email", "password1", "password2"]
         help_texts = {k: "" for k in fields}
+
+class AvatarForm(ModelForm):
+    class Meta:
+        model = Avatar
+        fields = {"user", "imagen"}
+        

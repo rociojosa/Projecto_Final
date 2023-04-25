@@ -1,0 +1,18 @@
+{% extends "AppFood/inicio.html" %}
+
+{% block titulo %} Editar Post {%endblock%}
+
+{% block content %}
+
+<h1>Formulario - Editar Post </h1>
+<h1>de {{ titulo }}</h1>
+
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <input type="submit" value="Enviar">
+
+    </form>
+    <br><hr>
+
+{%endblock%}

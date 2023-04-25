@@ -4,7 +4,7 @@ from Blog import views
 urlpatterns = [
     path('', views.insertPost, name="InsertPost"),
     path('post/<str:pk>/', views.post, name= "Post"),
-    path('edit/<str:pk>/', views.editPost, name= "EditPost"),
+    path('post-edit/<int:id>/', views.editPost, name= "EditPost"),
     path('post-list/', views.post_list, name='post_list'),
     path('post/<int:id>/', views.detalle_vista, name='post_detalle'),
     path(r'^(?P<pk>\d+)$', views.PostDetalle.as_view(), name="PostDetalle"),

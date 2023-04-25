@@ -6,6 +6,9 @@
 
 <h5><p>Titulo del Post: {{ post.titulo }}</p></h5>
 <h5><p>Descripcion del Post: {{ post.body }}</p></h5>
+<h5><p>Usuario: {{ post.author }}</p></h5>
+
+<a href="{% url 'EditPost' post.id %}">Editar</a>
 
 <title> Nuevo Comentario </title>
   
